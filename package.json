@@ -1,0 +1,37 @@
+{
+  "name": "toutiao-auto2",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "本机运行的微头条自动化流水线（采集 / 改写 / 配图 / 质检 / 发布），登录态与密钥只存本地",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "shared",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c cyan,magenta \"npm:dev:backend\" \"npm:dev:frontend\"",
+    "dev:backend": "npm run dev --workspace @tou/backend",
+    "dev:frontend": "npm run dev --workspace @tou/frontend",
+    "start": "npm run start --workspace @tou/backend",
+    "build": "npm run build --workspace @tou/frontend",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write .",
+    "selftest": "npm run selftest --workspace @tou/backend",
+    "smoke": "npm run smoke --workspace @tou/backend",
+    "seed": "npm run seed --workspace @tou/backend",
+    "e2e": "playwright test --config e2e/playwright.config.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "concurrently": "^10.0.6",
+    "prettier": "^3.6.2",
+    "typescript": "^7.0.2"
+  }
+}

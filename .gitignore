@@ -1,0 +1,53 @@
+# 依赖
+node_modules/
+.pnpm-store/
+
+# 构建产物
+dist/
+.vite/
+
+# 运行时数据（含登录态，红线：绝不入库）
+data/
+.env
+.env.local
+.env.*
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# 日志与临时
+*.log
+.dev-*.log
+.selftest*.log
+logs/
+.tmp/
+playwright-report/
+test-results/
+coverage/
+output/
+*.tsbuildinfo
+
+# 编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# 本地投稿草稿与配图（含图源，仅本机留存，不上传）
+/drafts/
+
+# 静态界面演示：仅本地查看 / 线上预览，不随源码上传
+/demo/
+
+# 本地协作笔记（含内部工作记录，仅本机留存，不上传）
+/.workbuddy/
+
+# 本地 AI 工具配置与内部规划稿（含第三方 skill 自带许可文件，不上传）
+/.codebuddy/
+
+# 发布平台自动生成的应用标记（仅本机留存，不上传）
+/.wbapp_*.genie

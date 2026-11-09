@@ -1,0 +1,22 @@
+# 只跑不依赖真实浏览器、目标平台页面与登录态的检查。
+# selftest / e2e 需要本机 Chromium 与扫码登录，留给本地手动执行。
+# lint 暂不纳入：仓库存在存量未格式化文件，先不挂红灯。
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    name: typecheck + test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
